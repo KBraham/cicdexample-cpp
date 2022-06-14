@@ -36,16 +36,11 @@ jobs:
       run: ctest -C ${{env.BUILD_TYPE}}
       
     - run: |
-          ls
-          ls ${{github.workspace}}/build
-          ls ${{github.workspace}}/build/app
           tree
-      
-    - name: Download a Build Artifact
-      uses: actions/download-artifact@v3.0.0
+          clang-format --version
+          
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.0
       with:
-        # Artifact name
-        name: plantwaterer
-        # Destination path
+        name: plant-waterer
         path: ${{github.workspace}}/build/app/cpp-plant-waterer
-      
